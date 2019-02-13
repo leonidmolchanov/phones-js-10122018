@@ -1,5 +1,6 @@
 import { PhonesCatalogComponent } from './phone-catalog/phone-catalog.component.js';
 import { OnePhoneViewComponent } from './one-phone-view/one-phone-view.component.js';
+import { PhonesBasketComponent } from './phone-basket/phone-basket.component.js';
 import { PhonesPageService } from './phones-page.service.js';
 
 export class PhonesPageComponent {
@@ -8,7 +9,9 @@ export class PhonesPageComponent {
     this._render();
 
     this._phoneService = new PhonesPageService();
-
+      this._phoneBasket = new PhonesBasketComponent({
+          element: this.element.querySelector('#basket'),
+      });
     this._phoneCatalog = new PhonesCatalogComponent({
       element: this.element.querySelector('#catalog'),
       phones: this._phoneService.getAllPhones(),
@@ -44,15 +47,7 @@ export class PhonesPageComponent {
           </select>
         </p>
       </section>
-
-      <section>
-        <p>Shopping Cart</p>
-        <ul>
-          <li>Phone 1</li>
-          <li>Phone 2</li>
-          <li>Phone 3</li>
-        </ul>
-      </section>
+<div id="basket"></div>
     </div>
 
     <!--Main content-->
